@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/wakaztahir/CLionProjects/CoolCompiler/lex.yy.c
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+io.h
+-
+stdlib.h
+-
+stdlib.h
+-
+math.h
+-
+stdlib.h
+-
+
