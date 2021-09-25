@@ -6,7 +6,13 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/wakaztahir/CLionProjects/CoolCompiler/main.cpp
+C:/Users/wakaztahir/CLionProjects/CoolCompiler/cool-parse.h
+
+C:/Users/wakaztahir/CLionProjects/CoolCompiler/lextest.cc
+stdio.h
+-
+cool-parse.h
+C:/Users/wakaztahir/CLionProjects/CoolCompiler/cool-parse.h
 iostream
 -
 

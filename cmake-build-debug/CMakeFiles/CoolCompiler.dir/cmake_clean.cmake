@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/CoolCompiler.dir/main.cpp.obj"
+  "CMakeFiles/CoolCompiler.dir/lexer-helpers.cpp.obj"
+  "CMakeFiles/CoolCompiler.dir/lextest.cc.obj"
   "CoolCompiler.exe"
   "CoolCompiler.exe.manifest"
   "CoolCompiler.lib"

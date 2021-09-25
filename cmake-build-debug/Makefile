@@ -126,32 +126,59 @@ CoolCompiler\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\build
 .PHONY : CoolCompiler\fast
 
-main.obj: main.cpp.obj
+lexer-helpers.obj: lexer-helpers.cpp.obj
 
-.PHONY : main.obj
+.PHONY : lexer-helpers.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\main.cpp.obj
-.PHONY : main.cpp.obj
+lexer-helpers.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lexer-helpers.cpp.obj
+.PHONY : lexer-helpers.cpp.obj
 
-main.i: main.cpp.i
+lexer-helpers.i: lexer-helpers.cpp.i
 
-.PHONY : main.i
+.PHONY : lexer-helpers.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\main.cpp.i
-.PHONY : main.cpp.i
+lexer-helpers.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lexer-helpers.cpp.i
+.PHONY : lexer-helpers.cpp.i
 
-main.s: main.cpp.s
+lexer-helpers.s: lexer-helpers.cpp.s
 
-.PHONY : main.s
+.PHONY : lexer-helpers.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\main.cpp.s
-.PHONY : main.cpp.s
+lexer-helpers.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lexer-helpers.cpp.s
+.PHONY : lexer-helpers.cpp.s
+
+lextest.obj: lextest.cc.obj
+
+.PHONY : lextest.obj
+
+# target to build an object file
+lextest.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lextest.cc.obj
+.PHONY : lextest.cc.obj
+
+lextest.i: lextest.cc.i
+
+.PHONY : lextest.i
+
+# target to preprocess a source file
+lextest.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lextest.cc.i
+.PHONY : lextest.cc.i
+
+lextest.s: lextest.cc.s
+
+.PHONY : lextest.s
+
+# target to generate assembly for a file
+lextest.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lextest.cc.s
+.PHONY : lextest.cc.s
 
 # Help Target
 help:
@@ -162,9 +189,12 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... CoolCompiler
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... lexer-helpers.obj
+	@echo ... lexer-helpers.i
+	@echo ... lexer-helpers.s
+	@echo ... lextest.obj
+	@echo ... lextest.i
+	@echo ... lextest.s
 .PHONY : help
 
 
