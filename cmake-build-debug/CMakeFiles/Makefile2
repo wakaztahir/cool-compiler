@@ -77,12 +77,12 @@ clean: CMakeFiles\CoolCompiler.dir\clean
 CMakeFiles\CoolCompiler.dir\all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wakaztahir\CLionProjects\CoolCompiler\cmake-build-debug\CMakeFiles --progress-num=1,2,3 "Built target CoolCompiler"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\wakaztahir\CLionProjects\CoolCompiler\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target CoolCompiler"
 .PHONY : CMakeFiles\CoolCompiler.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\CoolCompiler.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wakaztahir\CLionProjects\CoolCompiler\cmake-build-debug\CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wakaztahir\CLionProjects\CoolCompiler\cmake-build-debug\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\wakaztahir\CLionProjects\CoolCompiler\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles\CoolCompiler.dir\rule

@@ -84,12 +84,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/wakaztahir/CLionProjects/CoolCompiler/lexer-helpers.cpp">
-			<Option target="CoolCompiler"/>
-		</Unit>
-		<Unit filename="C:/Users/wakaztahir/CLionProjects/CoolCompiler/lexer-helpers.h">
-			<Option target="CoolCompiler"/>
-		</Unit>
 		<Unit filename="C:/Users/wakaztahir/CLionProjects/CoolCompiler/lextest.cc">
 			<Option target="CoolCompiler"/>
 		</Unit>

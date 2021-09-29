@@ -126,33 +126,6 @@ CoolCompiler\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\build
 .PHONY : CoolCompiler\fast
 
-lexer-helpers.obj: lexer-helpers.cpp.obj
-
-.PHONY : lexer-helpers.obj
-
-# target to build an object file
-lexer-helpers.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lexer-helpers.cpp.obj
-.PHONY : lexer-helpers.cpp.obj
-
-lexer-helpers.i: lexer-helpers.cpp.i
-
-.PHONY : lexer-helpers.i
-
-# target to preprocess a source file
-lexer-helpers.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lexer-helpers.cpp.i
-.PHONY : lexer-helpers.cpp.i
-
-lexer-helpers.s: lexer-helpers.cpp.s
-
-.PHONY : lexer-helpers.s
-
-# target to generate assembly for a file
-lexer-helpers.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\CoolCompiler.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\CoolCompiler.dir\lexer-helpers.cpp.s
-.PHONY : lexer-helpers.cpp.s
-
 lextest.obj: lextest.cc.obj
 
 .PHONY : lextest.obj
@@ -189,9 +162,6 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... CoolCompiler
-	@echo ... lexer-helpers.obj
-	@echo ... lexer-helpers.i
-	@echo ... lexer-helpers.s
 	@echo ... lextest.obj
 	@echo ... lextest.i
 	@echo ... lextest.s

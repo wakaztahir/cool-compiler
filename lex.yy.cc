@@ -1968,6 +1968,10 @@ void yyfree (void * ptr )
 int main(int argc, char **argv) {
     yyin = stdin;
 
+    // string constants should begin with " and end with "
+    // the input should go from a file
+    // remaining tokens have't been set
+
     yylex();
     return 0;
 }

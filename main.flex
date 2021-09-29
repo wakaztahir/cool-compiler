@@ -17,8 +17,8 @@ void print(char *thing) {
 
 %}
 
-%x comment
 %option noyywrap
+%x comment
 %%
 
 class           { print("class"); return CLASS; }
