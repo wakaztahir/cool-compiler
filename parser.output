@@ -1,0 +1,186 @@
+Terminals unused in grammar
+
+    CLASS
+    ELSE
+    FI
+    IF
+    IN
+    INHERITS
+    LET
+    LOOP
+    POOL
+    THEN
+    WHILE
+    CASE
+    ESAC
+    OF
+    DARROW
+    NEW
+    ISVOID
+    BOOL_CONST
+    TYPEID
+    IDENTIFIER
+    NOT
+    LE
+    LET_STMT
+    ASSIGN
+    PLUS
+    MINUS
+    MULTIPLY
+    DIVIDE
+    LBRACE
+    RBRACE
+
+
+Grammar
+
+    0 $accept: prog $end
+
+    1 prog: stmts
+
+    2 stmts: %empty
+    3      | stmt SEMICOLON stmts
+
+    4 stmt: STR_CONST
+    5     | INT_CONST
+    6     | ERROR
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    SEMICOLON (258) 3
+    CLASS (259)
+    ELSE (260)
+    FI (261)
+    IF (262)
+    IN (263)
+    INHERITS (264)
+    LET (265)
+    LOOP (266)
+    POOL (267)
+    THEN (268)
+    WHILE (269)
+    CASE (270)
+    ESAC (271)
+    OF (272)
+    DARROW (273)
+    NEW (274)
+    ISVOID (275)
+    STR_CONST (276) 4
+    INT_CONST (277) 5
+    BOOL_CONST (278)
+    TYPEID (279)
+    IDENTIFIER (280)
+    NOT (281)
+    LE (282)
+    LET_STMT (283)
+    ASSIGN (284)
+    PLUS (285)
+    MINUS (286)
+    MULTIPLY (287)
+    DIVIDE (288)
+    LBRACE (289)
+    RBRACE (290)
+    ERROR (291) 6
+
+
+Nonterminals, with rules where they appear
+
+    $accept (37)
+        on left: 0
+    prog (38)
+        on left: 1
+        on right: 0
+    stmts (39)
+        on left: 2 3
+        on right: 1 3
+    stmt (40)
+        on left: 4 5 6
+        on right: 3
+
+
+State 0
+
+    0 $accept: . prog $end
+
+    STR_CONST  shift, and go to state 1
+    INT_CONST  shift, and go to state 2
+    ERROR      shift, and go to state 3
+
+    $default  reduce using rule 2 (stmts)
+
+    prog   go to state 4
+    stmts  go to state 5
+    stmt   go to state 6
+
+
+State 1
+
+    4 stmt: STR_CONST .
+
+    $default  reduce using rule 4 (stmt)
+
+
+State 2
+
+    5 stmt: INT_CONST .
+
+    $default  reduce using rule 5 (stmt)
+
+
+State 3
+
+    6 stmt: ERROR .
+
+    $default  reduce using rule 6 (stmt)
+
+
+State 4
+
+    0 $accept: prog . $end
+
+    $end  shift, and go to state 7
+
+
+State 5
+
+    1 prog: stmts .
+
+    $default  reduce using rule 1 (prog)
+
+
+State 6
+
+    3 stmts: stmt . SEMICOLON stmts
+
+    SEMICOLON  shift, and go to state 8
+
+
+State 7
+
+    0 $accept: prog $end .
+
+    $default  accept
+
+
+State 8
+
+    3 stmts: stmt SEMICOLON . stmts
+
+    STR_CONST  shift, and go to state 1
+    INT_CONST  shift, and go to state 2
+    ERROR      shift, and go to state 3
+
+    $default  reduce using rule 2 (stmts)
+
+    stmts  go to state 9
+    stmt   go to state 6
+
+
+State 9
+
+    3 stmts: stmt SEMICOLON stmts .
+
+    $default  reduce using rule 3 (stmts)

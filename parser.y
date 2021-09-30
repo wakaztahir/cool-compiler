@@ -1,19 +1,11 @@
 %{
 
-#include <iostream>
-
 %}
 
-%token STRING NUM OTHER SEMICOLON PIC
-
-%type <name> STRING
-%type <number> NUM
-%type <name> PIC
-
-%union {
-	char name[20];
-	int number;
-}
+%token SEMICOLON CLASS ELSE FI IF IN INHERITS LET LOOP POOL THEN WHILE CASE ESAC OF DARROW NEW ISVOID
+%token STR_CONST INT_CONST BOOL_CONST TYPEID IDENTIFIER NOT LE LET_STMT
+%token ASSIGN PLUS MINUS MULTIPLY DIVIDE LBRACE RBRACE
+%token ERROR
 
 %%
 prog:
@@ -23,15 +15,13 @@ prog:
 stmts:
 	| stmt SEMICOLON stmts
 stmt:
-	STRING{
-		std::cout << "Hello to you too";
+	STR_CONST {
+		printf("String");
 	}
-	| NUM {
-		std::cout << "That is a number";
+	| INT_CONST {
+		printf("This is a number");
 	}
-	| OTHER
+	| ERROR
 ;
-
-%%
 
 %%
