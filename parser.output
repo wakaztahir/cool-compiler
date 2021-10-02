@@ -68,7 +68,7 @@ Terminals, with rules where they appear
     DARROW (273)
     NEW (274)
     ISVOID (275)
-    STR_CONST (276) 4
+    STR_CONST <string> (276) 4
     INT_CONST (277) 5
     BOOL_CONST (278)
     TYPEID (279)

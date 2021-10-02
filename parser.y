@@ -1,4 +1,8 @@
 %{
+#include <stdio.h>
+
+int yylex();
+int yyerror(char *s);
 
 %}
 
@@ -6,6 +10,12 @@
 %token STR_CONST INT_CONST BOOL_CONST TYPEID IDENTIFIER NOT LE LET_STMT
 %token ASSIGN PLUS MINUS MULTIPLY DIVIDE LBRACE RBRACE
 %token ERROR
+
+%type <string> STR_CONST
+
+%union {
+    char *string;
+}
 
 %%
 prog:
@@ -25,3 +35,19 @@ stmt:
 ;
 
 %%
+
+int yyerror(char *s)
+{
+
+  extern int yylineno;	// defined and maintained in lex.c
+
+  printf("ERROR %s at symbol on line %d \n",s,yylineno);
+
+  return 0;
+}
+
+int main()
+{
+    yyparse();
+    return 0;
+}

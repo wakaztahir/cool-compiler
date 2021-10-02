@@ -68,9 +68,13 @@
 /* First part of user prologue.  */
 #line 1 "parser.y"
 
+#include <stdio.h>
+
+int yylex();
+int yyerror(char *s);
 
 
-#line 74 "parser.tab.c"
+#line 78 "parser.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -157,7 +161,16 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+union YYSTYPE
+{
+#line 16 "parser.y"
+
+    char *string;
+
+#line 171 "parser.tab.c"
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -533,7 +546,7 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    12,    12,    15,    16,    18,    21,    24
+       0,    22,    22,    25,    26,    28,    31,    34
 };
 #endif
 
@@ -1327,23 +1340,23 @@ yyreduce:
   switch (yyn)
     {
   case 5:
-#line 18 "parser.y"
+#line 28 "parser.y"
                   {
 		printf("String");
 	}
-#line 1335 "parser.tab.c"
+#line 1348 "parser.tab.c"
     break;
 
   case 6:
-#line 21 "parser.y"
+#line 31 "parser.y"
                     {
 		printf("This is a number");
 	}
-#line 1343 "parser.tab.c"
+#line 1356 "parser.tab.c"
     break;
 
 
-#line 1347 "parser.tab.c"
+#line 1360 "parser.tab.c"
 
       default: break;
     }
@@ -1575,4 +1588,21 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 27 "parser.y"
+#line 37 "parser.y"
+
+
+int yyerror(char *s)
+{
+
+  extern int yylineno;	// defined and maintained in lex.c
+
+  printf("ERROR %s at symbol on line %d \n",s,yylineno);
+
+  return 0;
+}
+
+int main()
+{
+    yyparse();
+    return 0;
+}
