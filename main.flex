@@ -40,12 +40,14 @@ true                { print("bool_true"); return BOOL_CONST; }
 false               { print("bool_false"); return BOOL_CONST; }
 not                 { print("not"); return NOT; }
 le                  { print("le"); return LE; }
+"("                   { return LBRACE; }
+")"                   { return RBRACE; }
 ";"                 { print("Semicolon"); return SEMICOLON; }
 =                   { print("assign"); return ASSIGN; }
-"+"                 { print("plus"); return PLUS; }
-"-"                 { print("minus"); return MINUS; }
-"*"                 { print("multiply"); return MULTIPLY; }
-\/                  { print("divide"); return DIVIDE; }
+"+"                 { return PLUS; }
+"-"                 { return MINUS; }
+"*"                 { return MULTIPLY; }
+\/                  { return DIVIDE; }
 
 \"                  string_buf_ptr = string_buf; BEGIN(str);
 
@@ -99,14 +101,14 @@ le                  { print("le"); return LE; }
 @                   { print("at"); }
 :                   { print("colon"); }
 \.                  { print("dot"); }
-[0-9]+              { print("int_const"); return INT_CONST; }
+[0-9]+              { return INT_CONST; }
 "[0-9a-zA-Z]+"      { print("str_const"); return STR_CONST; }
 {ID}                { print("identifier"); return IDENTIFIER; }
 \(\*                { printf("begin comment\n"); BEGIN(comment); }
 <comment>.          { printf("comment body\n"); }
 <comment>\*\)       { printf("end comment\n"); BEGIN(INITIAL); }
 
-[\t\r ]             {  printf("tab space"); };
+[\t\r ]             {  };
 \n                  { yylineno++; };
 
 .                   { printf("Don't know this %s",yytext); return ERROR; }

@@ -484,18 +484,18 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  7
+#define YYFINAL  11
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   15
+#define YYLAST   16
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  37
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  7
+#define YYNRULES  10
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  10
+#define YYNSTATES  16
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   291
@@ -546,7 +546,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    22,    22,    25,    26,    28,    31,    34
+       0,    22,    22,    26,    29,    32,    35,    38,    39,    40,
+      41
 };
 #endif
 
@@ -560,7 +561,7 @@ static const char *const yytname[] =
   "OF", "DARROW", "NEW", "ISVOID", "STR_CONST", "INT_CONST", "BOOL_CONST",
   "TYPEID", "IDENTIFIER", "NOT", "LE", "LET_STMT", "ASSIGN", "PLUS",
   "MINUS", "MULTIPLY", "DIVIDE", "LBRACE", "RBRACE", "ERROR", "$accept",
-  "prog", "stmts", "stmt", YY_NULLPTR
+  "prog", "E", "OP", YY_NULLPTR
 };
 #endif
 
@@ -576,7 +577,7 @@ static const yytype_int16 yytoknum[] =
 };
 # endif
 
-#define YYPACT_NINF (-22)
+#define YYPACT_NINF (-29)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -590,7 +591,8 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-     -21,   -22,   -22,   -22,     2,   -22,     0,   -22,   -21,   -22
+     -22,   -17,   -22,     6,   -17,   -29,   -29,   -29,   -29,   -14,
+     -28,   -29,   -22,   -29,   -29,   -17
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -598,19 +600,20 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       3,     5,     6,     7,     0,     2,     0,     1,     3,     4
+       0,     3,     0,     0,     2,     7,     8,    10,     9,     0,
+       0,     1,     0,     4,     5,     6
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -22,   -22,    -4,   -22
+     -29,   -29,    -1,     8
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     4,     5,     6
+      -1,     3,     4,    12
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -618,33 +621,36 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       1,     2,     7,     8,     9,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     3
+       1,    10,     5,     6,     7,     8,    11,    14,    13,     9,
+       0,    15,     2,     5,     6,     7,     8
 };
 
 static const yytype_int8 yycheck[] =
 {
-      21,    22,     0,     3,     8,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    36
+      22,     2,    30,    31,    32,    33,     0,    35,    22,     1,
+      -1,    12,    34,    30,    31,    32,    33
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    21,    22,    36,    38,    39,    40,     0,     3,    39
+       0,    22,    34,    38,    39,    30,    31,    32,    33,    40,
+      39,     0,    40,    22,    35,    39
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    37,    38,    39,    39,    40,    40,    40
+       0,    37,    38,    39,    39,    39,    39,    40,    40,    40,
+      40
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     1,     0,     3,     1,     1,     1
+       0,     2,     1,     1,     3,     3,     3,     1,     1,     1,
+       1
 };
 
 
@@ -1339,24 +1345,32 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
+  case 3:
+#line 26 "parser.y"
+              {
+        printf("SINGLE INT_CONST");
+    }
+#line 1354 "parser.tab.c"
+    break;
+
+  case 4:
+#line 29 "parser.y"
+                             {
+        printf("INT_CONST OP INT_CONST");
+    }
+#line 1362 "parser.tab.c"
+    break;
+
   case 5:
-#line 28 "parser.y"
-                  {
-		printf("String");
-	}
-#line 1348 "parser.tab.c"
-    break;
-
-  case 6:
-#line 31 "parser.y"
-                    {
-		printf("This is a number");
-	}
-#line 1356 "parser.tab.c"
+#line 32 "parser.y"
+                      {
+        printf("(E)");
+    }
+#line 1370 "parser.tab.c"
     break;
 
 
-#line 1360 "parser.tab.c"
+#line 1374 "parser.tab.c"
 
       default: break;
     }
@@ -1588,7 +1602,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 37 "parser.y"
+#line 44 "parser.y"
 
 
 int yyerror(char *s)
@@ -1596,7 +1610,7 @@ int yyerror(char *s)
 
   extern int yylineno;	// defined and maintained in lex.c
 
-  printf("ERROR %s at symbol on line %d \n",s,yylineno);
+  printf("ERROR %s on line %d \n",s,yylineno);
 
   return 0;
 }

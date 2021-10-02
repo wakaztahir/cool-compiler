@@ -19,19 +19,26 @@ int yyerror(char *s);
 
 %%
 prog:
-  stmts
+    E
 ;
 
-stmts:
-	| stmt SEMICOLON stmts
-stmt:
-	STR_CONST {
-		printf("String");
-	}
-	| INT_CONST {
-		printf("This is a number");
-	}
-	| ERROR
+E:
+    INT_CONST {
+        printf("SINGLE INT_CONST");
+    }
+    | INT_CONST OP INT_CONST {
+        printf("INT_CONST OP INT_CONST");
+    }
+    | LBRACE E RBRACE {
+        printf("(E)");
+    }
+    | E OP E
+;
+OP:
+    PLUS
+    | MINUS
+    | DIVIDE
+    | MULTIPLY
 ;
 
 %%
@@ -41,7 +48,7 @@ int yyerror(char *s)
 
   extern int yylineno;	// defined and maintained in lex.c
 
-  printf("ERROR %s at symbol on line %d \n",s,yylineno);
+  printf("ERROR %s on line %d \n",s,yylineno);
 
   return 0;
 }
