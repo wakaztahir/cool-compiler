@@ -17,23 +17,31 @@ int yyerror(char *s);
     char *string;
 }
 
+%left MINUS
+%left PLUS
+%left MULTIPLY
+%left DIVIDE
+
 %%
 prog:
     E
 ;
 
 E:
-    INT_CONST {
-        printf("SINGLE INT_CONST");
+    E PLUS E {
+        printf("E OP E");
     }
-    | INT_CONST OP INT_CONST {
-        printf("INT_CONST OP INT_CONST");
+    E MINUS E {
+        printf("E MINUS E");
     }
-    | LBRACE E RBRACE {
-        printf("(E)");
+    E MULTIPLY E {
+        printf("E MULTIPLY E");
     }
-    | E OP E
-;
+    E DIVIDE E {
+        printf("E DIVIDE E");
+    }
+    | LBRACE E RBRACE
+    | INT_CONST
 OP:
     PLUS
     | MINUS

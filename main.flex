@@ -40,8 +40,8 @@ true                { print("bool_true"); return BOOL_CONST; }
 false               { print("bool_false"); return BOOL_CONST; }
 not                 { print("not"); return NOT; }
 le                  { print("le"); return LE; }
-"("                   { return LBRACE; }
-")"                   { return RBRACE; }
+"("                 { return LBRACE; }
+")"                 { return RBRACE; }
 ";"                 { print("Semicolon"); return SEMICOLON; }
 =                   { print("assign"); return ASSIGN; }
 "+"                 { return PLUS; }
@@ -102,7 +102,6 @@ le                  { print("le"); return LE; }
 :                   { print("colon"); }
 \.                  { print("dot"); }
 [0-9]+              { return INT_CONST; }
-"[0-9a-zA-Z]+"      { print("str_const"); return STR_CONST; }
 {ID}                { print("identifier"); return IDENTIFIER; }
 \(\*                { printf("begin comment\n"); BEGIN(comment); }
 <comment>.          { printf("comment body\n"); }
