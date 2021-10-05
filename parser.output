@@ -1,8 +1,3 @@
-Nonterminals useless in grammar
-
-    OP
-
-
 Terminals unused in grammar
 
     SEMICOLON
@@ -34,29 +29,24 @@ Terminals unused in grammar
     ERROR
 
 
-Rules useless in grammar
-
-    8 OP: PLUS
-    9   | MINUS
-   10   | DIVIDE
-   11   | MULTIPLY
+State 12 conflicts: 1 shift/reduce
+State 13 conflicts: 1 shift/reduce
+State 14 conflicts: 1 shift/reduce
+State 15 conflicts: 1 shift/reduce
+State 16 conflicts: 5 shift/reduce
 
 
 Grammar
 
-    0 $accept: prog $end
+    0 $accept: E $end
 
-    1 prog: E
-
-    2 $@1: %empty
-
-    3 $@2: %empty
-
-    4 $@3: %empty
-
-    5 E: E PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    6  | LBRACE E RBRACE
-    7  | INT_CONST
+    1 E: INT_CONST
+    2  | E PLUS E
+    3  | E MULTIPLY E
+    4  | E MINUS E
+    5  | E DIVIDE E
+    6  | E POWER E
+    7  | LBRACE E RBRACE
 
 
 Terminals, with rules where they appear
@@ -82,7 +72,7 @@ Terminals, with rules where they appear
     NEW (274)
     ISVOID (275)
     STR_CONST <string> (276)
-    INT_CONST (277) 7
+    INT_CONST (277) 1
     BOOL_CONST (278)
     TYPEID (279)
     IDENTIFIER (280)
@@ -90,148 +80,106 @@ Terminals, with rules where they appear
     LE (282)
     LET_STMT (283)
     ASSIGN (284)
-    PLUS (285) 5
-    MINUS (286) 5
-    MULTIPLY (287) 5
+    PLUS (285) 2
+    MINUS (286) 4
+    MULTIPLY (287) 3
     DIVIDE (288) 5
-    LBRACE (289) 6
-    RBRACE (290) 6
-    ERROR (291)
+    POWER (289) 6
+    LBRACE (290) 7
+    RBRACE (291) 7
+    ERROR (292)
 
 
 Nonterminals, with rules where they appear
 
-    $accept (37)
+    $accept (38)
         on left: 0
-    prog (38)
-        on left: 1
-        on right: 0
     E (39)
-        on left: 5 6 7
-        on right: 1 5 6
-    $@1 (40)
-        on left: 2
-        on right: 5
-    $@2 (41)
-        on left: 3
-        on right: 5
-    $@3 (42)
-        on left: 4
-        on right: 5
+        on left: 1 2 3 4 5 6 7
+        on right: 0 2 3 4 5 6 7
 
 
 State 0
 
-    0 $accept: . prog $end
+    0 $accept: . E $end
 
     INT_CONST  shift, and go to state 1
     LBRACE     shift, and go to state 2
 
-    prog  go to state 3
-    E     go to state 4
+    E  go to state 3
 
 
 State 1
 
-    7 E: INT_CONST .
+    1 E: INT_CONST .
 
-    $default  reduce using rule 7 (E)
+    $default  reduce using rule 1 (E)
 
 
 State 2
 
-    6 E: LBRACE . E RBRACE
+    7 E: LBRACE . E RBRACE
 
     INT_CONST  shift, and go to state 1
     LBRACE     shift, and go to state 2
 
-    E  go to state 5
+    E  go to state 4
 
 
 State 3
 
-    0 $accept: prog . $end
+    0 $accept: E . $end
+    2 E: E . PLUS E
+    3  | E . MULTIPLY E
+    4  | E . MINUS E
+    5  | E . DIVIDE E
+    6  | E . POWER E
 
-    $end  shift, and go to state 6
+    $end      shift, and go to state 5
+    PLUS      shift, and go to state 6
+    MINUS     shift, and go to state 7
+    MULTIPLY  shift, and go to state 8
+    DIVIDE    shift, and go to state 9
+    POWER     shift, and go to state 10
 
 
 State 4
 
-    1 prog: E .
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
+    2 E: E . PLUS E
+    3  | E . MULTIPLY E
+    4  | E . MINUS E
+    5  | E . DIVIDE E
+    6  | E . POWER E
+    7  | LBRACE E . RBRACE
 
-    PLUS  shift, and go to state 7
-
-    $default  reduce using rule 1 (prog)
+    PLUS      shift, and go to state 6
+    MINUS     shift, and go to state 7
+    MULTIPLY  shift, and go to state 8
+    DIVIDE    shift, and go to state 9
+    POWER     shift, and go to state 10
+    RBRACE    shift, and go to state 11
 
 
 State 5
 
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    6  | LBRACE E . RBRACE
-
-    PLUS    shift, and go to state 7
-    RBRACE  shift, and go to state 8
-
-
-State 6
-
-    0 $accept: prog $end .
+    0 $accept: E $end .
 
     $default  accept
 
 
+State 6
+
+    2 E: E PLUS . E
+
+    INT_CONST  shift, and go to state 1
+    LBRACE     shift, and go to state 2
+
+    E  go to state 12
+
+
 State 7
 
-    5 E: E PLUS . E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-
-    INT_CONST  shift, and go to state 1
-    LBRACE     shift, and go to state 2
-
-    E  go to state 9
-
-
-State 8
-
-    6 E: LBRACE E RBRACE .
-
-    $default  reduce using rule 6 (E)
-
-
-State 9
-
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    5  | E PLUS E . $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-
-    PLUS  shift, and go to state 7
-
-    $default  reduce using rule 2 ($@1)
-
-    $@1  go to state 10
-
-
-State 10
-
-    5 E: E PLUS E $@1 . E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-
-    INT_CONST  shift, and go to state 1
-    LBRACE     shift, and go to state 2
-
-    E  go to state 11
-
-
-State 11
-
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    5  | E PLUS E $@1 E . MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-
-    PLUS   shift, and go to state 7
-    MINUS  shift, and go to state 12
-
-
-State 12
-
-    5 E: E PLUS E $@1 E MINUS . E $@2 E MULTIPLY E $@3 E DIVIDE E
+    4 E: E MINUS . E
 
     INT_CONST  shift, and go to state 1
     LBRACE     shift, and go to state 2
@@ -239,21 +187,19 @@ State 12
     E  go to state 13
 
 
-State 13
+State 8
 
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    5  | E PLUS E $@1 E MINUS E . $@2 E MULTIPLY E $@3 E DIVIDE E
+    3 E: E MULTIPLY . E
 
-    PLUS  shift, and go to state 7
+    INT_CONST  shift, and go to state 1
+    LBRACE     shift, and go to state 2
 
-    $default  reduce using rule 3 ($@2)
-
-    $@2  go to state 14
+    E  go to state 14
 
 
-State 14
+State 9
 
-    5 E: E PLUS E $@1 E MINUS E $@2 . E MULTIPLY E $@3 E DIVIDE E
+    5 E: E DIVIDE . E
 
     INT_CONST  shift, and go to state 1
     LBRACE     shift, and go to state 2
@@ -261,69 +207,107 @@ State 14
     E  go to state 15
 
 
+State 10
+
+    6 E: E POWER . E
+
+    INT_CONST  shift, and go to state 1
+    LBRACE     shift, and go to state 2
+
+    E  go to state 16
+
+
+State 11
+
+    7 E: LBRACE E RBRACE .
+
+    $default  reduce using rule 7 (E)
+
+
+State 12
+
+    2 E: E . PLUS E
+    2  | E PLUS E .
+    3  | E . MULTIPLY E
+    4  | E . MINUS E
+    5  | E . DIVIDE E
+    6  | E . POWER E
+
+    MULTIPLY  shift, and go to state 8
+    DIVIDE    shift, and go to state 9
+    POWER     shift, and go to state 10
+
+    POWER     [reduce using rule 2 (E)]
+    $default  reduce using rule 2 (E)
+
+
+State 13
+
+    2 E: E . PLUS E
+    3  | E . MULTIPLY E
+    4  | E . MINUS E
+    4  | E MINUS E .
+    5  | E . DIVIDE E
+    6  | E . POWER E
+
+    PLUS      shift, and go to state 6
+    MULTIPLY  shift, and go to state 8
+    DIVIDE    shift, and go to state 9
+    POWER     shift, and go to state 10
+
+    POWER     [reduce using rule 4 (E)]
+    $default  reduce using rule 4 (E)
+
+
+State 14
+
+    2 E: E . PLUS E
+    3  | E . MULTIPLY E
+    3  | E MULTIPLY E .
+    4  | E . MINUS E
+    5  | E . DIVIDE E
+    6  | E . POWER E
+
+    DIVIDE  shift, and go to state 9
+    POWER   shift, and go to state 10
+
+    POWER     [reduce using rule 3 (E)]
+    $default  reduce using rule 3 (E)
+
+
 State 15
 
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    5  | E PLUS E $@1 E MINUS E $@2 E . MULTIPLY E $@3 E DIVIDE E
+    2 E: E . PLUS E
+    3  | E . MULTIPLY E
+    4  | E . MINUS E
+    5  | E . DIVIDE E
+    5  | E DIVIDE E .
+    6  | E . POWER E
 
-    PLUS      shift, and go to state 7
-    MULTIPLY  shift, and go to state 16
+    POWER  shift, and go to state 10
+
+    POWER     [reduce using rule 5 (E)]
+    $default  reduce using rule 5 (E)
 
 
 State 16
 
-    5 E: E PLUS E $@1 E MINUS E $@2 E MULTIPLY . E $@3 E DIVIDE E
+    2 E: E . PLUS E
+    3  | E . MULTIPLY E
+    4  | E . MINUS E
+    5  | E . DIVIDE E
+    6  | E . POWER E
+    6  | E POWER E .
 
-    INT_CONST  shift, and go to state 1
-    LBRACE     shift, and go to state 2
+    PLUS      shift, and go to state 6
+    MINUS     shift, and go to state 7
+    MULTIPLY  shift, and go to state 8
+    DIVIDE    shift, and go to state 9
+    POWER     shift, and go to state 10
 
-    E  go to state 17
-
-
-State 17
-
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    5  | E PLUS E $@1 E MINUS E $@2 E MULTIPLY E . $@3 E DIVIDE E
-
-    PLUS  shift, and go to state 7
-
-    $default  reduce using rule 4 ($@3)
-
-    $@3  go to state 18
-
-
-State 18
-
-    5 E: E PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 . E DIVIDE E
-
-    INT_CONST  shift, and go to state 1
-    LBRACE     shift, and go to state 2
-
-    E  go to state 19
-
-
-State 19
-
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    5  | E PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E . DIVIDE E
-
-    PLUS    shift, and go to state 7
-    DIVIDE  shift, and go to state 20
-
-
-State 20
-
-    5 E: E PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE . E
-
-    INT_CONST  shift, and go to state 1
-    LBRACE     shift, and go to state 2
-
-    E  go to state 21
-
-
-State 21
-
-    5 E: E . PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E
-    5  | E PLUS E $@1 E MINUS E $@2 E MULTIPLY E $@3 E DIVIDE E .
-
-    $default  reduce using rule 5 (E)
+    PLUS      [reduce using rule 6 (E)]
+    MINUS     [reduce using rule 6 (E)]
+    MULTIPLY  [reduce using rule 6 (E)]
+    DIVIDE    [reduce using rule 6 (E)]
+    POWER     [reduce using rule 6 (E)]
+    $default  reduce using rule 6 (E)

@@ -46,7 +46,8 @@ le                  { print("le"); return LE; }
 =                   { print("assign"); return ASSIGN; }
 "+"                 { return PLUS; }
 "-"                 { return MINUS; }
-"*"                 { return MULTIPLY; }
+"**"                { print("power"); return POWER; }
+"*"                 { print("multiply"); return MULTIPLY; }
 \/                  { return DIVIDE; }
 
 \"                  string_buf_ptr = string_buf; BEGIN(str);

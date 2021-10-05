@@ -80,9 +80,10 @@ extern int yydebug;
     MINUS = 286,
     MULTIPLY = 287,
     DIVIDE = 288,
-    LBRACE = 289,
-    RBRACE = 290,
-    ERROR = 291
+    POWER = 289,
+    LBRACE = 290,
+    RBRACE = 291,
+    ERROR = 292
   };
 #endif
 
@@ -94,7 +95,7 @@ union YYSTYPE
 
     char *string;
 
-#line 98 "parser.tab.h"
+#line 99 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
